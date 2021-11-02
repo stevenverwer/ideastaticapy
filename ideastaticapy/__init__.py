@@ -3,5 +3,5 @@
 @git: https://github.com/stevenverwer
 """
 
-from .connection import module
-from .ideaConnection import module
+import connection
+import ideaConnection
