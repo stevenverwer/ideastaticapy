@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ideastaticapy
+Version: 0.0.1
+Summary: ideastaticapy is a package for running common IDEA StatiCa commands
+Home-page: https://github.com/stevenverwer/ideastaticapy
+Author: Steven Verwer
+Author-email: stevenverwer@gmail.com
+License: MIT
+Description: ================================================================================
+        IDEA StatiCa for Python (ideastaticapy)
+        ================================================================================
+        ideastaticapy is a package for running common IDEA StatiCa commands build on top of the IDEA StatiCa C# API and Plugin.
+Keywords: IDEA STATICA
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
