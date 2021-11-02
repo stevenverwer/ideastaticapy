@@ -9,4 +9,5 @@ ideastaticapy/ideaConnection.py
 ideastaticapy.egg-info/PKG-INFO
 ideastaticapy.egg-info/SOURCES.txt
 ideastaticapy.egg-info/dependency_links.txt
+ideastaticapy.egg-info/requires.txt
 ideastaticapy.egg-info/top_level.txt

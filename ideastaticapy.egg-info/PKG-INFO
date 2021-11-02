@@ -6,10 +6,10 @@ Home-page: https://github.com/stevenverwer/ideastaticapy
 Author: Steven Verwer
 Author-email: stevenverwer@gmail.com
 License: MIT
-Description: ================================================================================
-        IDEA StatiCa for Python (ideastaticapy)
-        ================================================================================
+Description: **IDEA StatiCa for Python (ideastaticapy)**
+        
         ideastaticapy is a package for running common IDEA StatiCa commands build on top of the IDEA StatiCa C# API and Plugin.
+        
 Keywords: IDEA STATICA
 Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
