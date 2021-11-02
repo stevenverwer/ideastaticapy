@@ -3,6 +3,7 @@ MANIFEST.in
 README.md
 setup.cfg
 setup.py
+ideastaticapy/__init__.py
 ideastaticapy/connection.py
 ideastaticapy/ideaConnection.py
 ideastaticapy.egg-info/PKG-INFO
