@@ -3,5 +3,5 @@
 @git: https://github.com/stevenverwer
 """
 
-import connection 
-import ideaConnection
+from ideastaticapy import connection
+from ideastaticapy import ideaConnection
