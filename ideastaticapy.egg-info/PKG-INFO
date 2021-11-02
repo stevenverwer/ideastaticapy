@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ideastaticapy
-Version: 0.0.9
+Version: 0.1.0
 Summary: ideastaticapy is a package for running common IDEA StatiCa commands
 Home-page: https://github.com/stevenverwer/ideastaticapy
 Author: Steven Verwer
