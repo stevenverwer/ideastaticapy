@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setuptools.setup(
   name = 'ideastaticapy',         # How you named your package folder (MyLib)
   packages = ['ideastaticapy'],   # Chose the same as "name"
-  version = '0.0.3',      # Start with a small number and increase it with every change you make
+  version = '0.0.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'ideastaticapy is a package for running common IDEA StatiCa commands',   # Give a short description about your library
   long_description=long_description,
@@ -15,8 +15,7 @@ setuptools.setup(
   download_url = '',    # I explain this later on
   keywords = ['IDEA STATICA'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
-                    'clr',
-                    'json',
+                    'pythonnet==2.5.2',
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
