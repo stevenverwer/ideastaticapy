@@ -150,17 +150,5 @@ class Workplane(Component):
         self.rotz = rotz
     
     
-
-if __name__ == "__main__":
-    boltList = [[-60,  45 ],
-                [-60, -45 ],
-                [ 60,  45 ],
-                [ 60, -45 ]]
-    bolt1 = Bolt(16, '8.8')
-    boltAssembly1 = BoltAssembly()
-    boltAssembly1.setBolt(bolt1)
-    boltAssembly1.appendPositions(boltList)
-    
-    
     
     
