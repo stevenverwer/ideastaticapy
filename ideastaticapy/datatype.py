@@ -22,7 +22,7 @@ class paramList(list):
             ]
         
     def _getKey(self,lst,key,name):
-        return next((d[key] for d in lst if d['name'] == name), None)
+        return next((d.get(key) for d in lst if d.get('name') == name), None)
     def __getKey__(self,key,name):
         return  self._getKey(self,key,name)
 
@@ -31,27 +31,27 @@ class paramList(list):
         self[idx][key] = val
     
     def _getIndex(self,lst,name):
-        return next((self.index(d) for d in lst if d['name'] == name), None)
+        return next((self.index(d) for d in lst if d.get('name') == name), None)
     def __getIndex__(self,name):
         return self._getIndex(self,name)
     
     def _getDict(self,lst,name): 
-        return next((d for d in lst if d['name'] == name), None)
+        return next((d for d in lst if d.get('name') == name), None)
     def __getDict__(self,name): 
         return self._getDict(self,name)
     
     def getCategoryItem(self,name):
         d = self.getDict(name)
-        if not d['category']:
+        if not d.get('category'):
             return None
-        categorieList = self._getKey(self.categorieDicts,'value',d['category'])
+        categorieList = self._getKey(self.categorieDicts,'value',d.get('category'))
         if not categorieList:
             return None
-        if not isinstance(d['value'], int):
-            raise Exception(f"{d['value']} is not an integer")
-        if (d['value']<0) or (d['value']>=len(categorieList)):
-            raise Exception(f"{d['value']} does not point to a categoryItem")
-        return categorieList[d['value']]
+        if not isinstance(d.get('value'), int):
+            raise Exception(f"{d.get('value')} is not an integer")
+        if (d.get('value')<0) or (d.get('value')>=len(categorieList)):
+            raise Exception(f"{d.get('value')} does not point to a categoryItem")
+        return categorieList[d.get('value')]
     
     def getIntFromCategoryItem(self, category, categoryItem):
         categorieList = self._getKey(self.categorieDicts, 'value', category)

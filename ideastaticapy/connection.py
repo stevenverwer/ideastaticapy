@@ -38,15 +38,11 @@ class Bolt: # inheritance
         self.parameters = paramList()
         boltGrade = self.parameters.getIntFromCategoryItem('boltGrade', grade)
         boltSize = self.parameters.getIntFromCategoryItem('boltSize', size)
-        self.parameters.append([
+        self.parameters.extend([
             {'name': 'boltGrade','value': boltGrade, 'lb': 0, 'ub': 6, 'type': 'int', 'category':'boltGrade'},
             {'name': 'boltSize','value': boltSize, 'lb': 0, 'ub': 11, 'type': 'int', 'category':'boltSize'},
             {'name': 'boltShearInThread','value': shearInThread, 'lb': 0, 'ub': 1, 'type': 'int', 'category':None}
             ])
-    def __call__(self):
-        paramNames = ['boltSize', 'boltGrade' 'boltShearInThread']
-        boltParams = [ self.parameters.__getDict__(name) for name in paramNames ]
-        return boltParams
 
 
 class BoltAssembly(Assembly):
@@ -57,7 +53,7 @@ class BoltAssembly(Assembly):
         self.cols=[]
         self.connectedParts = []
         self.parameters = paramList()
-        self.parameters.append([
+        self.parameters.extend([
             {'name': 'Nx','value': None, 'lb': 1, 'ub': 100, 'type': 'int', 'category':None},
             {'name': 'Ny','value': None, 'lb': 1, 'ub': 100, 'type': 'int', 'category':None},
             {'name': 'xOffset','value': None, 'lb': 0, 'ub': inf, 'type': 'float', 'category':None},
@@ -106,7 +102,7 @@ class BoltAssembly(Assembly):
             for ny in range(Ny):
                 y_pos = y_min + py * (ny-1)
                 
-                positions.append([ [x_pos, y_pos] ])
+                positions.append([x_pos, y_pos])
         
         self.__clearBoltGrid__()
         self.appendPositions(positions)
