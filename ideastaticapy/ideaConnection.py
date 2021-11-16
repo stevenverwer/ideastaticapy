@@ -7,6 +7,23 @@ import sys, clr, json
 
 class Connector:
     def __init__(self,ideaPath=r"C:\Program Files\IDEA StatiCa\StatiCa 21.1"):
+        from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey
+        from winreg import EnumKey, EnumValue, QueryValueEx
+        
+
+        aKey = r"SOFTWARE\IDEAStatiCa\21.1\IDEAStatiCa\Designer"
+        aReg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
+        for i in range(1024):
+            try:
+                aKey = OpenKey(aReg, aKey)
+                val = EnumValue(aKey,i)
+                if val[0] == 'InstallDir64':
+                    ideaPath = val[1]
+            except EnvironmentError:
+                break
+        
+        
+        
         self.ideaPath = ideaPath
         sys.path.append(ideaPath)
     
