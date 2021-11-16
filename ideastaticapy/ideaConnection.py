@@ -66,6 +66,7 @@ class Connector:
     
     def checkResults(self, connection, ideaConnectionClient):
         # 'after calculation' return checkResults.
+        # https://idea-statica.github.io/ideastatica-public/docs/latest/api-iom/IdeaRS.OpenModel.Connection.ConnectionCheckRes.html
         checkResults_json_string = ideaConnectionClient.GetCheckResultsJSON(connection.Identifier)
         if checkResults_json_string:
             return json.loads(checkResults_json_string)
