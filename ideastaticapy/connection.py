@@ -34,7 +34,7 @@ class Material:
 
 class Bolt: # inheritance
     def __init__(self, size, grade, shearInThread):
-        from .datatype import paramList
+        from ideastaticapy.datatype import paramList
         self.parameters = paramList()
         boltGrade = self.parameters.getIntFromCategoryItem('boltGrade', grade)
         boltSize = self.parameters.getIntFromCategoryItem('boltSize', size)
@@ -56,7 +56,8 @@ class BoltAssembly(Assembly):
         self.rows=[]
         self.cols=[]
         self.connectedParts = []
-        self.parameters = paramList([
+        self.parameters = paramList()
+        self.parameters.append([
             {'name': 'Nx','value': None, 'lb': 1, 'ub': 100, 'type': 'int', 'category':None},
             {'name': 'Ny','value': None, 'lb': 1, 'ub': 100, 'type': 'int', 'category':None},
             {'name': 'xOffset','value': None, 'lb': 0, 'ub': inf, 'type': 'float', 'category':None},

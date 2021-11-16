@@ -5,7 +5,9 @@ setup.cfg
 setup.py
 ideastaticapy/__init__.py
 ideastaticapy/connection.py
+ideastaticapy/datatype.py
 ideastaticapy/ideaConnection.py
+ideastaticapy/parameterOptimization.py
 ideastaticapy.egg-info/PKG-INFO
 ideastaticapy.egg-info/SOURCES.txt
 ideastaticapy.egg-info/dependency_links.txt
