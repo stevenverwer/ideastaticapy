@@ -214,15 +214,23 @@ class Workplane(Component):
         self.rotx = rotx
         self.roty = roty
         self.rotz = rotz
+<<<<<<< HEAD
 
 
     
 
         
 
+=======
+    
+    
+>>>>>>> a8dbdf39a6390a6bb88f6fd5ac75baf631ab24b7
     
 
     
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a8dbdf39a6390a6bb88f6fd5ac75baf631ab24b7
