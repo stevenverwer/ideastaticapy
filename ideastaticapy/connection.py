@@ -4,6 +4,11 @@
 """
 
 class Component:
+    # a component has parameters
+    def __init__(self):
+        from ideastaticapy.datatype import paramList
+        self.parameters = paramList()
+        
     def updateIdeaParameters(self, **kw):
         output = {}
         for key, parameter in kw.items():
@@ -13,6 +18,28 @@ class Component:
         return output
 
 
+class Plate(Component):
+    def __init__(self, thickness, material):
+        super().__init__()
+        self.parameters.extend([
+            {'name': 't','value': None, 'lb': 1, 'ub': 100, 'type': 'float', 'category':None},
+            {'name': 'material','value': None, 'lb': 1, 'ub': 100, 'type': 'float', 'category':None},
+            ])
+            
+        if isinstance(material, Material):
+            self.material = material
+        else:
+            raise Exception(f"{material} is not instance {Material}.")
+
+
+class StiffenerPlate(Plate):
+    def __init__(self, thickness, material, B1=0.1, B2=0.1, H1=0.1, H2=0.1):
+        super().__init__(thickness, material)
+        self.B1 = B1
+        self.B2 = B2
+        self.H1 = H1
+        self.H2 = H2
+        
 
 class Assembly:
     def updateIdeaParameters(self, params):
@@ -24,12 +51,10 @@ class Assembly:
             self.parameters[idx]['value'] = params[idx]
 
 
-
 class Material:
     def __init__(self, name='S355'):
         self.name = name
     pass
-
 
 
 class Bolt: # inheritance
@@ -164,23 +189,6 @@ class BoltAssembly(Assembly):
 
 
 
-class Plate(Component):
-    def __init__(self, thickness, material):
-        self.thickness = thickness
-        if isinstance(material, Material):
-            self.material = material
-        else:
-            raise Exception(f"{material} is not instance {Material}.")
-
-
-
-class StiffenerPlate(Plate):
-    def __init__(self, thickness, material, B1=0.1, B2=0.1, H1=0.1, H2=0.1):
-        super().__init__(thickness, material)
-        self.B1 = B1
-        self.B2 = B2
-        self.H1 = H1
-        self.H2 = H2
 
     def setOffset(self, xOffset=0, yOffset=0):
         self.xOffset = xOffset
@@ -195,7 +203,6 @@ class NegativeVolume(Component):
         self.ez = ez
 
 
-
 class Weld(Component):
     def __init__(self, material, thickness):
         if isinstance(material, Material):
@@ -203,7 +210,6 @@ class Weld(Component):
         else:
             raise Exception(f"{material} is not instance {Material}.")
         self.thickness = thickness
-
 
 
 class Workplane(Component):

@@ -4,26 +4,31 @@
 """
 
 import sys, clr, json
-
+r"C:\Program Files\IDEA StatiCa\StatiCa 21.1"
 class Connector:
-    def __init__(self,ideaPath=r"C:\Program Files\IDEA StatiCa\StatiCa 21.1"):
-        from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey
-        from winreg import EnumKey, EnumValue, QueryValueEx
-        
-
-        aKey = r"SOFTWARE\IDEAStatiCa\21.1\IDEAStatiCa\Designer"
-        aReg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
-        for i in range(1024):
-            try:
-                aKey = OpenKey(aReg, aKey)
-                val = EnumValue(aKey,i)
-                if val[0] == 'InstallDir64':
-                    ideaPath = val[1]
-            except EnvironmentError:
-                break
-        
-        
-        
+    def __init__(self,ideaPath=None):
+        if not ideaPath:
+            from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKey
+            from winreg import EnumKey, EnumValue, QueryValueEx
+            ideaVersions = [r"SOFTWARE\IDEAStatiCa\21.1\IDEAStatiCa\Designer",
+                            r"SOFTWARE\IDEAStatiCa\21.0\IDEAStatiCa\Designer",
+                            r"SOFTWARE\IDEAStatiCa\20.1\IDEAStatiCa\Designer"]
+            aReg = ConnectRegistry(None, HKEY_LOCAL_MACHINE)
+            found = False
+            for each in ideaVersions:
+                if found:
+                    break
+                aKey = each;
+                for i in range(1024):
+                    try:
+                        openedKey = OpenKey(aReg, aKey)
+                        val = EnumValue(aKey,i)
+                        if val[0] == 'InstallDir64':
+                            ideaPath = val[1]
+                            found = True
+                            break
+                    except EnvironmentError:
+                        break
         self.ideaPath = ideaPath
         sys.path.append(ideaPath)
     
@@ -38,7 +43,7 @@ class Connector:
         return ideaConnectionClient
     
     def closeProject(self, ideaConnectionClient):
-        ideaConnectionClient.Close()
+        ideaConnectionClient.CloseProject()
         pass
     
     def getProjectInfo(self,ideaConnectionClient):
@@ -56,6 +61,12 @@ class Connector:
             if conn.Name == name:
                 return conn
         return None
+    
+    def getMaterialsInProject(self, ideaConnectionClient):
+        return ideaConnectionClient.GetMaterialsInProject();
+    
+    def getCrossSectionsInProject(self, ideaConnectionClient):
+        return ideaConnectionClient.GetCrossSectionsInProject();
     
     def getParams(self,connection, ideaConnectionClient) -> dict:
         params_json_string = ideaConnectionClient.GetParametersJSON(connection.Identifier)
